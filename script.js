@@ -66,16 +66,22 @@ function initializeGame() {
 }
 
 document.getElementById("submit").addEventListener("click", () => {
-  player1 = document.getElementById("player1").value || "Player 1";
-  player2 = document.getElementById("player2").value || "Player 2";
+  const player1Input = document.getElementById("player1").value.trim();
+  const player2Input = document.getElementById("player2").value.trim();
 
-  if (!player1 || !player2) {
+  if (!player1Input || !player2Input) {
     alert("Please enter names for both players!");
     return;
   }
 
+  // Assign player names
+  player1 = player1Input || "Player 1";
+  player2 = player2Input || "Player 2";
+
+  // Hide the input form and display the game board
   document.getElementById("player-input").style.display = "none";
   document.getElementById("game-board").style.display = "block";
 
+  // Initialize the game
   initializeGame();
 });
